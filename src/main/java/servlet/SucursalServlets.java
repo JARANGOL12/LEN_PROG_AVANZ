@@ -11,11 +11,13 @@ import models.Sucursal;
 import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.jdt.internal.compiler.util.Util;
+
 import dao.impl.SucursalDaoImpl;
 
 /**
  * Servlet implementation class SucursalServlets
- */@WebServlet("/sucursales")
+ */@WebServlet("/sucursales/*")
 public class SucursalServlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,15 +35,29 @@ public class SucursalServlets extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		 List<Sucursal> sucursales = sucursalDao.listar();
+		
+		String pathInfo =request.getPathInfo();
+		System.out.println(pathInfo);
+		
+		if(pathInfo==null) {
+          List<Sucursal> sucursales = sucursalDao.listar();
 			
 			request.setAttribute("sucursales", sucursales);
+			RequestDispatcher dispacher =request.getRequestDispatcher("/view/listarSucursales.jsp");
+			dispacher.forward(request, response);
+		} else {
+			String id=utils.Util.extractDataFromPath(pathInfo,1);
+			System.out.println("id:" + id);
 			
+			Sucursal sucursal = sucursalDao.obtenerSucursal(Integer.parseInt(id));
+			request.setAttribute("sucursal", sucursal);
+			
+			
+			RequestDispatcher dispacher =request.getRequestDispatcher("/view/detalleSucursal.jsp");
+			dispacher.forward(request, response);
+			
+		}
 		
-		RequestDispatcher dispacher =request.getRequestDispatcher("/view/listarSucursales.jsp");
-		dispacher.forward(request, response);
 		}
 	
 

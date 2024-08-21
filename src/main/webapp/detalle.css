@@ -1,0 +1,20 @@
+.contenedor__principal {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.imagen-cabecera {
+    width: 50%;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.contenedor__detalles {
+    text-align: left;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+}

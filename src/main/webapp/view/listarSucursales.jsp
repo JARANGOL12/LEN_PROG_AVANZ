@@ -9,11 +9,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistema de Restaurantes</title>
+<link rel="icon" type="image/png" href="restaurante.png">
+  <link rel="stylesheet" href="styles.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+	 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<div class="container mt-5">
@@ -25,6 +28,7 @@
 				for (Sucursal sucursal : listaSucursal) {
 			%>
 				<div class="col-md-4 mt-4">
+				<a href="/Restaurante_Peru/sucursales/<%=sucursal.getIdSucursal()%>">
                     <div class="card">
                         <img class="card-img-top" src="<%= sucursal.getImagenUrl() %>" alt="Imagen del restaurante">
                         <div class="card-body">
@@ -35,6 +39,7 @@
                             <!--  a href="sucursales/reservas/ sucursal.getId() " class="btn btn-primary">Hacer Reserva</a-->
                         </div>
                     </div>	
+                    </a>
                 </div>
 			<%
 				}
